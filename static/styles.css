@@ -1,0 +1,42 @@
+body {
+    background-color: rgba(132, 199, 93, 0.525);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 80px;
+}
+
+h1 {
+    color: black;
+    font-size: 42px;
+}
+
+p {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+
+div {
+    background-color: white;
+    width: 350px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+select {
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#result {
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 25px;
+}
