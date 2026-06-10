@@ -1,0 +1,24 @@
+{
+  "name": "lotto-number-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "python -m flask --app app run --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acolli33/lotto-number-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/acolli33/lotto-number-generator/issues"
+  },
+  "homepage": "https://github.com/acolli33/lotto-number-generator#readme",
+  "dependencies": {
+    "flask": "^0.2.10"
+  }
+}

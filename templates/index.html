@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h1>Lotto Num Generator</h1>
+
+        <p>
+            Generate 6 random numbers between 1 and 48 by clicking the "generate" button below:
+        </p>
+        <button onclick="getNums()">Generate</button>
+        <p id="result"></p>
+        <script>
+            function getNums() {
+                fetch("/generate")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("result").textContent = data.join(", ");
+                });
+            }
+        </script>
+    </body>
+</html>
