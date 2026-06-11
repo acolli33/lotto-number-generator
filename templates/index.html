@@ -9,21 +9,68 @@
             <h1>Lottery Number Generator</h1>
             <p>Select a lottery game and click the button to generate numbers</p>
         <div>
-            <select id="game">
+            <select id="game" onchange="toggleKenoSpots()">
                 <option value="megabucks">Oregon Megabucks</option>
                 <option value="mega-millions">Mega Millions</option>
                 <option value="pick4">Pick 4</option>
                 <option value="powerball">Powerball</option>
                 <option value="keno">Keno</option>
             </select>
+                <select id="keno-spots" style="display: none;">
+                    <option value="1">1 Spot</option>
+                    <option value="2">2 Spot</option>
+                    <option value="3">3 Spot</option>
+                    <option value="4">4 Spot</option>
+                    <option value="5">5 Spot</option>
+                    <option value="6">6 Spot</option>
+                    <option value="7">7 Spot</option>
+                    <option value="8">8 Spot</option>
+                    <option value="9">9 Spot</option>
+                    <option value="10">10 Spot</option>
+                </select>
             <button onclick="getNums()">Generate</button>
              <p id="result"></p>
         </div>
             <script>
                 function getNums() {
                     const game = document.getElementById("game").value;
+                    const kenoSpots = document.getElementById("keno-spots").value;
 
-                    fetch(`/generate/${game}`)
+                    let url = `/generate/${game}`;
+
+                    if (game === "keno") {
+                        url = `/generate/keno/${kenoSpots}`;
+                    }
+                    fetch(url)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById("result").textContent = data.join(", ");
+                        });
+                }
+            </script>
+            <script>
+                function toggleKenoSpots() {
+                    const game = document.getElementById("game").value;
+                    const kenoSpots = document.getElementById("keno-spots");
+
+                    if (game === "keno") {
+                        kenoSpots.style.display = "inline-block";
+                    } else {
+                        kenoSpots.style.display = "none";
+                    }
+                }
+
+                function getNums() {
+                    const game = document.getElementById("game").value;
+                    const kenoSpots = document.getElementById("keno-spots").value;
+
+                    let url = `/generate/${game}`;
+
+                    if (game === "keno") {
+                        url = `/generate/keno/${kenoSpots}`;
+                    }
+
+                    fetch(url)
                         .then(response => response.json())
                         .then(data => {
                             document.getElementById("result").textContent = data.join(", ");

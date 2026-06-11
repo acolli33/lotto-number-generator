@@ -29,7 +29,7 @@ def get_pick4_nums():
         nums.append(lotto_number)
     return nums
 
-# Powerball number generator (5 distinct regular nums 1-70 and one nondestinct Mega Ball number (1-24))
+# Powerball number generator (5 distinct regular nums 1-70 and one nondestinct Mega Ball number (1-26))
 def get_powerball_nums():
     nums = random.sample(range(1, 70), 5)
     nums = sorted(nums)
@@ -39,9 +39,9 @@ def get_powerball_nums():
 
     return nums
 
-# Keno number generator (8 distinct nums from 1-80)
-def get_keno_nums():
-    nums = random.sample(range(1, 81), 8)
+# Keno number generator: choose 1-10 distinct nums from 1-80
+def get_keno_nums(spots):
+    nums = random.sample(range(1, 81), spots)
     return sorted(nums)
 
 # app routes
@@ -74,9 +74,9 @@ def generate_powerball():
     return jsonify(nums)
 
 
-@app.route("/generate/keno")
-def generate_keno():
-    nums = get_keno_nums()
+@app.route("/generate/keno/<int:spots>")
+def generate_keno(spots):
+    nums = get_keno_nums(spots)
     return jsonify(nums)
 
 if (__name__) == "__main__":
